@@ -52,7 +52,7 @@ activities: list[Activity] = [
     Activity(
         id=2,
         title="Настольные игры",
-        description="Собираемся поиграть в Манчкин и Имаджинариум",
+        description="Собираемся поиграть в настольные игры",
         category=ActivityCategory.board_games,
         city="Зеленоградск",
         max_participants=6,
@@ -64,6 +64,7 @@ activities: list[Activity] = [
 @app.get("/")
 def root():
     return {
+        "message": "Hello from ActivityHub API",
         "project": "ActivityHub",
         "status": "running"
     }
@@ -75,6 +76,13 @@ def health_check():
         "status": "ok"
     }
 
+@app.get("/info")
+def app_info():
+    return {
+        "app": "activity-hub",
+        "version": "0.1.0",
+        "port": 8000
+    }
 
 @app.get("/activities")
 def get_activities():
