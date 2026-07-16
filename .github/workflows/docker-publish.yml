@@ -1,24 +1,18 @@
-name: Build and publish Docker image
-
+name: Build and publish
 on:
   push:
     branches:
       - main
-      - master
   workflow_dispatch:
-
 permissions:
   contents: read
   packages: write
-
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: fraychikkk/activity-hub
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
